@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expense & Budget Visualizer</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div>
+        <h1>Expense &amp; Budget Visualizer</h1>
+        <p>Simple daily expense tracker for students.</p>
+      </div>
+      <button id="themeButton" class="theme-button" type="button">Dark Mode</button>
+    </header>
+
+    <main>
+      <section class="summary-grid">
+        <div class="card total-card">
+          <p class="label">Total Spending</p>
+          <h2 id="totalBalance">Rp 0</h2>
+          <p id="totalInfo">0 transactions</p>
+        </div>
+        <div class="card month-card">
+          <p class="label">This Month</p>
+          <h2 id="monthlyTotal">Rp 0</h2>
+          <p id="monthInfo">0 transactions</p>
+        </div>
+      </section>
+
+      <section class="card form-card">
+        <div class="section-title">
+          <div>
+            <p class="small-title">ADD</p>
+            <h2>Add Transaction</h2>
+          </div>
+          <button id="categoryButton" class="secondary-button" type="button">Custom Category</button>
+        </div>
+
+        <form id="expenseForm">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="itemName">Item Name</label>
+              <input id="itemName" type="text" placeholder="Example: Lunch">
+              <span id="nameError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input id="amount" type="number" min="1" step="1" placeholder="25000">
+              <span id="amountError" class="error"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="category">Category</label>
+              <select id="category"></select>
+              <span id="categoryError" class="error"></span>
+            </div>
+          </div>
+
+          <button class="primary-button" type="submit">Add Transaction</button>
+          <p id="formMessage" class="message"></p>
+        </form>
+      </section>
+
+      <section class="main-grid">
+        <div class="card">
+          <div class="section-title">
+            <div>
+              <p class="small-title">HISTORY</p>
+              <h2>Transactions</h2>
+            </div>
+            <select id="monthFilter" class="small-select">
+              <option value="all">All Months</option>
+            </select>
+          </div>
+
+          <div id="transactionList" class="transaction-list"></div>
+        </div>
+
+        <div class="card">
+          <div class="section-title">
+            <div>
+              <p class="small-title">CHART</p>
+              <h2>Spending by Category</h2>
+            </div>
+          </div>
+
+          <div class="chart-area">
+            <div id="pieChart" class="pie-chart"></div>
+          </div>
+          <div id="chartLegend" class="legend"></div>
+        </div>
+      </section>
+
+      <section class="card monthly-summary">
+        <div class="section-title">
+          <div>
+            <p class="small-title">OPTIONAL FEATURE</p>
+            <h2>Monthly Summary</h2>
+          </div>
+          <select id="summaryMonth" class="small-select"></select>
+        </div>
+
+        <div class="month-stats">
+          <div>
+            <span>Total</span>
+            <strong id="summaryTotal">Rp 0</strong>
+          </div>
+          <div>
+            <span>Transactions</span>
+            <strong id="summaryCount">0</strong>
+          </div>
+          <div>
+            <span>Average</span>
+            <strong id="summaryAverage">Rp 0</strong>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Expense &amp; Budget Visualizer</p>
+    </footer>
+  </div>
+
+  <dialog id="categoryDialog">
+    <div class="dialog-content">
+      <div class="section-title">
+        <div>
+          <p class="small-title">OPTIONAL FEATURE</p>
+          <h2>Custom Categories</h2>
+        </div>
+        <button id="closeCategory" class="close-button" type="button">×</button>
+      </div>
+
+      <form id="categoryForm" class="category-form">
+        <input id="newCategory" type="text" maxlength="20" placeholder="Example: Study">
+        <button class="primary-button" type="submit">Add</button>
+      </form>
+
+      <div id="categoryList" class="category-list"></div>
+      <p class="note">Food, Transport, and Fun are the default categories.</p>
+    </div>
+  </dialog>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
